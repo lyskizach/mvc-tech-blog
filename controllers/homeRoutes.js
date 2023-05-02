@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         );
         res.render('homepage', {
             blogPosts,
-            logged_in: req.session.logged_in,
+            // logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET FOR DASHBOARD
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const blogPostData = await BlogPost.findAll({
             include: [
@@ -39,6 +39,31 @@ router.get('/dashboard', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+// SIGN UP
+router.post('/signup', async (req, res) => {
+    try {
+        const newUserData = await User.create({
+            username: req.body.username,
+            password: req.body.password,
+        });
+        req.session.save(() => {
+            req.session.logged_in = true,
+            res.status(200).json(newUserData);
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// REDIRECT TO HOMEPAGE IF ALREADY LOGGED IN
+router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+    res.render('login');
 });
 
 module.exports = router;
