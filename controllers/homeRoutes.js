@@ -42,25 +42,34 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 // SIGN UP
-router.post('/signup', async (req, res) => {
-    try {
-        const newUserData = await User.create({
-            username: req.body.username,
-            password: req.body.password,
-        });
-        req.session.save(() => {
-            req.session.logged_in = true,
-            res.status(200).json(newUserData);
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+// router.post('/signup', async (req, res) => {
+//     try {
+//         const newUserData = await User.create({
+//             username: req.body.username,
+//             password: req.body.password,
+//         });
+//         req.session.save(() => {
+//             req.session.logged_in = true,
+//             res.status(200).json(newUserData);
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
+
+// SIGNUP get route
+router.get('/signup', async (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+      }
+      res.render('signup');
+})
 
 // REDIRECT TO HOMEPAGE IF ALREADY LOGGED IN
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-      res.redirect('/');
+      res.redirect('/dashboard');
       return;
     }
     res.render('login');

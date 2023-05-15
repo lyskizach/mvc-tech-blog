@@ -16,6 +16,4 @@ router.post('/blogpost', async (req, res) => {
     }
 });
 
-// 
-
 module.exports = router;
