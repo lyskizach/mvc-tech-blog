@@ -5,13 +5,13 @@ const withAuth = require('../utils/auth');
 // GET FOR HOME PAGE ROUTE
 router.get('/', async (req, res) => {
     try {
-        const blogPostData = await BlogPost.findAll();
-        const blogPosts = blogPostData.map((bPost) =>
-            bPost.get({ plain: true })
-        );
-        res.render('homepage', {
-            blogPosts,
-            // logged_in: req.session.logged_in,
+        // const blogPostData = await BlogPost.findAll();
+        // const blogPosts = blogPostData.map((bPost) =>
+        //     bPost.get({ plain: true })
+        // );
+        res.render('home', {
+            // blogPosts,
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
