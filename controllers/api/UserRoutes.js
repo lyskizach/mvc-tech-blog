@@ -4,7 +4,7 @@ const { User } = require('../../models');
 // '/api/users' route
 
 // create new user
-router.post('/signup', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
       const newUserData = await User.create({
         name: req.body.name,
@@ -33,21 +33,25 @@ router.post('/login', async (req, res) => {
       const userInput = await User.findOne({
         where: { email: req.body.email },
       });
+
       if (!userInput) {
         res
           .status(400)
           .json({ message: 'Invalid username, please try again.' });
         return;
-      }
+      };
+
       const validPassword = await userInput.checkPassword(
         req.body.password
       );
+
       if (!validPassword) {
         res
           .status(400)
           .json({ message: 'Invalid password, please try again.' });
         return;
-      }
+      };
+
       req.session.save(() => {
         req.session.user_id = userInput.id;
         req.session.logged_in = true;
@@ -67,6 +71,7 @@ router.post('/logout', (req, res) => {
         req.session.destroy(() => {
             res.status(204).end();
         });
+        console.log('LOGGED OUT BITCH!!!')
     } else {
         res.status(404).end();
     }
