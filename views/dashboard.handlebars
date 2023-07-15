@@ -1,13 +1,29 @@
-<div class='row mt-4'>
-  <div class='container' id="background-font">
-    <h4 style="text-align: center;">Welcome!</h4>
-  </div>
+{{#if user.blogposts.length}}
+  <h1 class="userposts">Blog Posts By {{user.name}}</h1>
+  {{#each user.blogposts as |blogpost|}}
+    <div class="row m-2 blog-post-small">
+      <div class="title-box">
+        <h2><a id="blogpostTitle" class="hyperlink" href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h2>
+      </div>
+      <div class="content-box">
+        <p>{{blogpost.content}}</p>
+      </div>
+      <div>
+        <form class="delete-form">
+          <button class="delete-post-btn btn" data-id="{{blogpost.id}}" >Delete</button>
+          <a href="/blogpost_edit/{{blogpost.id}}" class="edit-post-btn btn">Edit</a>
+        </form>
+      </div>
+    </div>
+  {{/each}} 
+{{else}}
+    
+{{/if}}
+
+<div class="create-new">
+  <a class="link btn" href="/blogpost_input">Create A New Post</a>
 </div>
 
-<div class="col-md-12">
-{{> blogPosts }}
-</div>
 
-<div class="row justify-content-center p-5">
-  <a class="btn btn-sm btn-danger" href="/createBlogpost">Create New Blogpost</a>
-</div>
+<script src="/js/deletepost.js">
+</script>
