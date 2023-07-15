@@ -33,25 +33,23 @@ router.post('/login', async (req, res) => {
       const userInput = await User.findOne({
         where: { email: req.body.email },
       });
-
+      console.log(userInput);
       if (!userInput) {
         res
           .status(400)
           .json({ message: 'Invalid username, please try again.' });
         return;
       };
-
       const validPassword = await userInput.checkPassword(
         req.body.password
       );
-
+      console.log(validPassword);
       if (!validPassword) {
         res
           .status(400)
           .json({ message: 'Invalid password, please try again.' });
         return;
       };
-
       req.session.save(() => {
         req.session.user_id = userInput.id;
         req.session.logged_in = true;
@@ -62,7 +60,7 @@ router.post('/login', async (req, res) => {
       });
     } catch (err) {
       res.status(500).json(err);
-    }
+    };
 });
 
 // LOGOUT
