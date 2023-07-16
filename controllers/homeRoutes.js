@@ -126,7 +126,7 @@ router.get('/signup', async (req, res) => {
 // REDIRECT TO HOMEPAGE IF ALREADY LOGGED IN
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/dashboard');
     return;
   }
   res.render('login');
