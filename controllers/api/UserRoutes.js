@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { BlogPost, Comment, User } = require('../models');
 
 // '/api/users' route
-
 // create new user
 router.post('/signup', async (req, res) => {
     try {
@@ -65,15 +64,17 @@ router.post('/login', async (req, res) => {
 
 // LOGOUT
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-      req.session.destroy(() => {
-          res.status(204).end();
-      });
-      console.log('LOGGED OUT');
-  } else {
-      res.status(404).end();
+  try {
+    req.session.destroy(() => {
+      req.session.logged_in = false;
+      res.status(204).json( { message: "destroyed session "});
+    });
+
+    console.log('LOGGED OUT');
+
+  } catch (err) {
+    console.log(err);
   }
 });
-
 
 module.exports = router;

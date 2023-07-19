@@ -1,3 +1,4 @@
+{{!-- this is being rendered by the GET FOR DASHBOARD SAHOWING BLOGPOSTS SPECIFC TO LOGGED IN USER --}}
 {{#if user.blogposts.length}}
   <h1 class="userposts">Blog Posts By {{user.name}}</h1>
   {{#each user.blogposts as |blogpost|}}
@@ -25,5 +26,4 @@
 </div>
 
 
-{{!-- <script src="/js/deletepost.js"> --}}
-{{!-- </script> --}}
+<script src="/path/to/deletepost.js"></script>
