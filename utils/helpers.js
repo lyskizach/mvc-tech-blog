@@ -6,6 +6,6 @@ const isEqual = (value1, value2, options) => {
     }
   };
   
-  module.exports = { 
+module.exports = { 
     isEqual: isEqual, 
-  };
+};

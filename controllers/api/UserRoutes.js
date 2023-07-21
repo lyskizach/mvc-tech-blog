@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { BlogPost, Comment, User } = require('../models');
+const { BlogPost, Comment, User } = require('../../models');
 
 // '/api/users' route
 // create new user
@@ -71,6 +71,7 @@ router.post('/logout', (req, res) => {
     });
 
     console.log('LOGGED OUT');
+    // document.location.replace('/');
 
   } catch (err) {
     console.log(err);
