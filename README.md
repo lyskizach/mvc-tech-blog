@@ -8,7 +8,7 @@
 
   ## Link to Deployed Site
 
-  https://github.com/lyskizach/mvc-tech-blog
+  [GitHub Repository](https://github.com/lyskizach/mvc-tech-blog)
 
   ## Table of Contents
 
