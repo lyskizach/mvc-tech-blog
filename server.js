@@ -20,7 +20,7 @@ const hbs = exphbs.create({
 });
 
 const sess = {
-  secret: process.env.SESS_SECRET,
+  secret: process.env.SECRET,
   cookie: {
     httpOnly: true,
     sameSite: 'strict',
@@ -41,7 +41,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {'Content-Type': 'text/javascript'}));
 
 app.use(routes);
 

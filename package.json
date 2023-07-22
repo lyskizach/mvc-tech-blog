@@ -5,13 +5,13 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "watch": "nodemon server.js",
+    "start": "nodem server.js && node/seeds/index.js",
+    "watch": "nodemox server.js",
     "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/lyskizach/mvc-tech-blog"
   },
   "keywords": [],
   "author": "",
