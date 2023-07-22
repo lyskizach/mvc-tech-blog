@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
         },
       ],
     });
+    console.log(blogPostData, 'get all blogposts');
     const blogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }));
 
     res.render('home', {
@@ -26,30 +27,26 @@ router.get('/', async (req, res) => {
 
 // GET FOR DASHBOARD SAHOWING BLOGPOSTS SPECIFC TO LOGGED IN USER
 router.get('/dashboard', withAuth, async (req, res) => {
-    try {
-      const userData = await User.findByPk(req.session.user_id, {
-        // change to req.session.logged_in???
-        attributes: { exclude: [ 'password' ] },
-        include: [
-          {
-            model: BlogPost,
-            where: { creator_id: req.session.user_id },
-          },
-        ],
-      });
-      console.log(userData, 'get dashboard posts by the req.session.user_id');
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: [ 'password' ] },
+      include: [
+        {model: BlogPost},
+      ],
+    });
+    console.log(userData);
 
-      const user = userData.get({ plain: true });
-      console.log(user);
+    const user = userData.get({ plain: true });
+    console.log(user);
 
-      res.render('dashboard', {
-        user,
-        logged_in: true,
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+    res.render('dashboard', {
+      user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // GET FOR BLOGPOST BY SPECIFIC ID
 router.get('/blogpost/:id', async (req, res) => {
@@ -72,6 +69,8 @@ router.get('/blogpost/:id', async (req, res) => {
         },
       ],
     });
+
+    console.log(blogPostData);
 
     console.log('BLOGPOST FETCHED ACCOERDING TO ID');
 
@@ -112,7 +111,12 @@ router.get('/blogpost_input', withAuth, async (req, res) => {
 router.get('/blogpost_edit/:id', withAuth, async (req, res) => {
   try {
     const blogPostData = await BlogPost.findByPk(req.params.id, {
-      include: [{ model: User }],
+      include: [
+        { 
+          model: User, 
+          exclude: ['password']
+        }
+      ],
     });
 
     const blogPost = blogPostData.get({ plain: true });

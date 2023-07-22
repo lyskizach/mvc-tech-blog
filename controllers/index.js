@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const HomeRoutes = require('./HomeRoutes'); // Corrected relative path
+const HomeRoutes = require('./homeRoutes');
 const apiRoutes = require('./api');
 
 router.use('/', HomeRoutes);
