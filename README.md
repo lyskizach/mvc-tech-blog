@@ -7,8 +7,8 @@
   the site follows a MVC file structure and used node, express.js, handlebars, MySQL and sequelize. 
 
   ## Link to Deployed Site
-
-  [GitHub Repository](https://github.com/lyskizach/mvc-tech-blog)
+<!-- give herokue link here  -->
+[GitHub Repository](https://github.com/lyskizach/mvc-tech-blog)
 
   ## Table of Contents
 
