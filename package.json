@@ -17,9 +17,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lyskizach/mvc-tech-blog"
+    "url": "https://github.com/lyskizach/mvc-tech-blog/issue"
   },
-  "homepage": "",
+  "homepage": "https://github.com/lyskizach/mvc-tech-blog#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.6",
