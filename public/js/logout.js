@@ -1,9 +1,5 @@
 const logoutBtn = document.getElementById('logout-btn');
 
-if (logoutBtn) {
-  logoutBtn.addEventListener('click', logoutHandler);
-};
-
 const logoutHandler = async (event) => {
     event.preventDefault();
 
@@ -14,10 +10,13 @@ const logoutHandler = async (event) => {
       });
 
       if(response.ok) {
-        // console.log(response);
         document.location.replace('/');
       };
     } catch (err) {
       console.log(err);
     }
+};
+
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', logoutHandler);
 };
