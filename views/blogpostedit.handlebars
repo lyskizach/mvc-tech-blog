@@ -1,1 +1,16 @@
 {{!-- THIS PAGE IS FOR EDITING A SPECIFIC BLOGPOST BY ID --}}
+<div id="form-div">
+  <form class="form" id="form1">
+    <p>
+      <textarea name="title" type="text" id="title">{{blogPost.title}}</textarea>
+    </p>
+    <p>
+      <textarea name="content" id="content">{{blogPost.content}}</textarea>
+    </p>
+    <div class="submit">
+      <input type="submit" class="btn" value="Update Post" data-id="{{blogPost.id}}" id="update-btn"/>
+    </div>
+  </form>
+</div>
+
+<script src="/js/editpost.js"></script>

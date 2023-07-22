@@ -1,2 +1,20 @@
 {{!-- display blogposts? --}}
 {{!-- this page is being rendered by the GET FOR HOME PAGE ROUTE SHOWING ALL BLOGPOSTSS --}}
+{{#if blogPosts.length}}
+  {{#each blogPosts as |blogpost|}}
+    <div class="row m-2">
+      <div>
+        <div>
+          <h2><a id="blogpostTitle" href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h2>
+          <p>{{blogpost.date_created}}</p>
+        </div>
+        <h4>By {{blogpost.user.name}}</h4>
+      </div>
+      <div>
+        <p>{{blogpost.content}}</p>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  <h2>Hurry and be the FIRST to create a Blog Post!</h2>
+{{/if}}

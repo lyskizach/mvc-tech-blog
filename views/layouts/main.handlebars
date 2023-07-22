@@ -4,7 +4,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <title>MVC-Tech-Blog</title>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'/>
-    {{!-- <link rel='stylesheet' href='public/css/style.css'/> --}}
+    {{!-- <link rel='stylesheet' href='/css/style.css'/> --}}
     {{!-- add code to public/css/style.css --}}
 </head>
 
@@ -40,31 +40,9 @@
     </div>
 
     {{!-- check if this will always be present or if we call upon logout.js only??? --}}
-    <script>
-        const logoutBtn = document.getElementById('logout-btn');
-
-        if (logoutBtn) {
-        logoutBtn.addEventListener('click', logoutHandler);
-        };
-
-        const logoutHandler = async (event) => {
-            event.preventDefault();
-
-            try {
-            const response = await fetch('/api/users/logout', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-            });
-
-            if(response.ok) {
-                console.log(response);
-                document.location.replace('/');
-            };
-            } catch (err) {
-            console.log(err);
-            }
-        };
-    </script>
+    {{#if logged_in}}
+        <script src='/js/logout.js'></script>
+    {{/if}}
 
 </body>
 </html>

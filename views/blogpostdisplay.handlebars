@@ -1,1 +1,38 @@
 {{!-- THIS PAGE IS RENDERING GET FOR BLOGPOST BY SPECIFIC ID '/blogpost/:id' --}}
+<div>
+  <div>
+    <h2>{{blogPost.title}}</h2>
+    <h3>by {{blogPost.user.name}}</h3>
+    <p>{{blogPost.date_created}}</p>
+  </div>
+  <div>
+    <h4>{{blogPost.content}}</h4>
+  </div>
+</div>
+
+<div class="comments">
+  {{#if blogPost.comments.length}}
+    <div>
+      <h3>Comments</h3>
+    </div>
+    {{#each blogPost.comments as |comment|}}
+      <div class="comment">
+        <div>
+          <p>{{comment.user.name}}:</p>
+          <p>{{comment.content}}</p>
+        </div>
+      </div>
+    {{/each}}
+  {{/if}}
+
+  {{#if logged_in}}
+    <form>
+      <textarea name="comment_text" maxlength="500" placeholder="comment" id="input"></textarea>
+      <button class="btn " type="submit" id="post">Post</button>
+    </form>
+  {{else}}
+    <p><a href="/login"></a>Login if youd like to leave a comment on this post</p>
+  {{/if}}
+</div>
+
+<script src="/js/comment.js"></script>
