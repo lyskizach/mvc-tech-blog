@@ -36,8 +36,7 @@
 
 
   ## Contributing 
-
-  N/A
+  I received help from ASKBCS for an issue of 'withAuth' getting to redirect to the correct page. Also about properly rendering the dashboard posts.
 
   ## Tests 
 
