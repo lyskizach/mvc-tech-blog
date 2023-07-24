@@ -9,7 +9,7 @@
   ## Link to Deployed Site
 <!-- give herokue link here  -->
 [Deployed Heroku Link](https://zachs-mvc-tech-blog-5b86eaefccea.herokuapp.com/)
-[GitHub Repository](https://github.com/lyskizach/mvc-tech-blog)
+<!-- [GitHub Repository](https://github.com/lyskizach/mvc-tech-blog) -->
 
   ## Table of Contents
 
